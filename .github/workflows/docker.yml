@@ -38,7 +38,6 @@ jobs:
           context: .
           file: .devops/QwenTTS-Demo.Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ github.ref_name }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
