@@ -16,10 +16,9 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
+
+      - name: Cleanup
+        run: rm -rf /opt/hostedtoolcache
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
