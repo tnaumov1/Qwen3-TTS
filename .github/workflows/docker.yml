@@ -42,5 +42,7 @@ jobs:
           file: .devops/QwenTTS-Demo.Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ github.ref_name }}
+          build-args: |
+            MAX_JOBS=2
           cache-from: type=gha
           cache-to: type=gha,mode=max

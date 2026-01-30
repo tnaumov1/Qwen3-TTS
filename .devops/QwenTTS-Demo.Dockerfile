@@ -1,7 +1,7 @@
 FROM nvidia/cuda:12.4.1-devel-ubuntu22.04 AS build
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV MAX_JOBS=4
+ARG MAX_JOBS=4
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
