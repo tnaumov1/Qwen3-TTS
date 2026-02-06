@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3.11-dev \
     python3.11-venv \
     ffmpeg \
+    wget \
     curl \
     && rm -rf /var/lib/apt/lists/* \
     && ln -sf /usr/bin/python3.11 /usr/bin/python3 \
@@ -24,7 +25,9 @@ RUN pip install --no-cache-dir ninja psutil packaging
 
 RUN pip install --no-cache-dir qwen-tts
 
-RUN pip install --no-cache-dir flash-attn --no-build-isolation
+RUN wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3/flash_attn-2.8.3+cu12torch2.4cxx11abiFALSE-cp311-cp311-linux_x86_64.whl
+
+RUN pip install --no-dependencies flash_attn-2.8.3+cu12torch2.4cxx11abiFALSE-cp311-cp311-linux_x86_64.whl
 
 FROM nvidia/cuda:12.4.1-runtime-ubuntu22.04 AS runtime
 
