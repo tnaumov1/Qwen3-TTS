@@ -5,11 +5,9 @@ ARG MAX_JOBS=4
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
-    git \
     python3.11 \
     python3.11-dev \
     python3.11-venv \
-    ffmpeg \
     wget \
     curl \
     && rm -rf /var/lib/apt/lists/* \
@@ -28,6 +26,8 @@ RUN pip install --no-cache-dir qwen-tts
 RUN wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3/flash_attn-2.8.3+cu12torch2.4cxx11abiFALSE-cp311-cp311-linux_x86_64.whl
 
 RUN pip install --no-dependencies flash_attn-2.8.3+cu12torch2.4cxx11abiFALSE-cp311-cp311-linux_x86_64.whl
+
+RUN rm -rf flash_attn-2.8.3+cu12torch2.4cxx11abiFALSE-cp311-cp311-linux_x86_64.whl
 
 FROM nvidia/cuda:12.4.1-runtime-ubuntu22.04 AS runtime
 
