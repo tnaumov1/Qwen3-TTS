@@ -3,13 +3,12 @@ FROM nvidia/cuda:12.4.1-runtime-ubuntu22.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    python3.11 \
-    python3.11-venv \
+    python3.10 \
+    python3.10-venv \
     wget \
     curl \
     sox \
     && rm -rf /var/lib/apt/lists/* \
-    && ln -sf /usr/bin/python3.11 /usr/bin/python3 \
     && ln -sf /usr/bin/python3 /usr/bin/python
 
 RUN python -m venv /opt/venv
@@ -23,7 +22,7 @@ RUN pip install --no-cache-dir \
 
 RUN pip install --no-cache-dir qwen-tts
 
-ARG FA_WHEEL=flash_attn-2.8.3+cu12torch2.6cxx11abiFALSE-cp311-cp311-linux_x86_64.whl
+ARG FA_WHEEL=flash_attn-2.8.3+cu12torch2.6cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
 
 RUN wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3/${FA_WHEEL}
 RUN pip install --no-dependencies ${FA_WHEEL}
