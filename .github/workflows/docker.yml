@@ -42,6 +42,6 @@ jobs:
           context: .
           file: .devops/QwenTTS-Demo.Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ghcr.io/qwen3-tts:${{ github.ref_name }}
+          tags: ghcr.io/tnaumov1/qwen3-tts:${{ github.ref_name }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
