@@ -18,12 +18,12 @@ ENV PATH="/opt/venv/bin:${PATH}"
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel
 
 RUN pip install --no-cache-dir \
-    torch==2.8.0 torchaudio==2.8.0 \
+    torch==2.6.0 torchaudio==2.6.0 \
     --index-url https://download.pytorch.org/whl/cu124
 
 RUN pip install --no-cache-dir qwen-tts
 
-ARG FA_WHEEL=flash_attn-2.8.3+cu12torch2.8cxx11abiTRUE-cp311-cp311-linux_x86_64.whl
+ARG FA_WHEEL=flash_attn-2.8.3+cu12torch2.6cxx11abiTRUE-cp311-cp311-linux_x86_64.whl
 
 RUN wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3/${FA_WHEEL}
 RUN pip install --no-dependencies ${FA_WHEEL}
