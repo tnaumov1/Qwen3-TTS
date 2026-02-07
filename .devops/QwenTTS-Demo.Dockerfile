@@ -17,7 +17,9 @@ ENV PATH="/opt/venv/bin:${PATH}"
 
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel
 
-RUN pip install --no-cache-dir torchaudio=2.9.1
+RUN pip install --no-cache-dir \
+    torch==2.9.1 torchaudio==2.9.1 \
+    --index-url https://download.pytorch.org/whl/cu124
 
 RUN pip install --no-cache-dir qwen-tts
 
